@@ -8,7 +8,44 @@
     <title>Javascript Fundamentals Quiz</title>
 </head>
 <body>
-    
-    <script src="./assets/js/style.js"></script>
+    <header id="header">
+        <div>
+        <a class="highscore-link" href="#">View Highscores</a>
+        <h3 id="timer">Time: </h3>
+        </div>
+    </header>
+    <main>
+        <div class="container"></div>
+            <div class="intro-section">
+                <h3>Coding Quiz Challenge</h3>
+                <p>Try to answer the following code-related questions within the time. Keep in mind time will be deducted for incorrect answers.</p>
+                <button id="start">Start</button>
+            </div>  
+        <div class="question-section hide">
+                <h3 id="question-title">Question</h3>
+                <div class="options">
+                    <button id="opt1">1st Choice</button>
+                    <button id="opt2">2nd Choice</button>
+                    <button id="opt3">3rd Choice</button>
+                    <button id="opt4">4th Choice</button>
+                </div>
+            </div>
+        <div class="divider"></div>
+        <div class="initial-section hide">
+            <p>Your Final Score is </p>
+            <p>Enter initials 
+                <input id="input" type="text">
+                <button id="submit" >Submit</button>
+            </p>
+        </div>
+        <div class="result-section hide">
+            <h3>Highscores</h3>
+            <ul id="finalscore"></ul>
+            <button id="go-back">Go Back</button>
+            <button id="clear-highscores">Clear Highscores</button>
+        </div>
+    </main>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
