@@ -25,12 +25,8 @@ var questions = [
         answer: "console log",
     }
 ];
-//When use clicks on start, the challenge begins, 
-    // timer begins
+
 var start = document.querySelector('#start');
-
-start.addEventListener("click", startButton);
-
 var introSection = document.querySelector('.intro-section')
 var questionSection = document.querySelector('.question-section');
 var questionTitle = document.querySelector('#question-title');
@@ -40,15 +36,21 @@ var optionThree = document.querySelector('#opt3');
 var optionFour = document.querySelector('#opt4');
 var options = document.querySelector(".options");
 var timer = document.querySelector('#timer');
-var initialSection = document.querySelector('.initial-section');
+var initialsSection = document.querySelector('.initials-section');
 var resultSection = document.querySelector('.result-section');
 var submit = document.getElementById("submit");
+var goBack = document.getElementById('go-back');
+// var clearHighscores = getElementById('clear-highscores');
 var timerInterval;
+var clearHighscores;
 var index = 0;
-var time = 20;
+var time = 60;
+
+//When use clicks on start, the challenge begins, and timer starts
+start.addEventListener("click", startButton);
 
 function startButton() {
-    //hide intro and last 2 sections
+//hide intro and last 2 sections
 introSection.classList.add('hide');
 questionSection.classList.remove('hide');
 runQuestions();
@@ -61,7 +63,6 @@ optionOne.textContent = questions[index].options[0];
 optionTwo.textContent = questions[index].options[1];
 optionThree.textContent = questions[index].options[2];
 optionFour.textContent = questions[index].options[3];
-
 }
 
 options.addEventListener('click', function(event) {
@@ -71,7 +72,7 @@ options.addEventListener('click', function(event) {
 if(options == questions[index].answer) {
     console.log("correct");
     }else {
-       time = time - 5;
+       time = time - 10;
        console.log("wrong")
     }
     showNext()
@@ -86,7 +87,6 @@ function showNext() {
     runQuestions();
 }
 
-
 function startTime() {
     // Sets interval in variable
     timerInterval = setInterval(function() {
@@ -99,45 +99,66 @@ function startTime() {
         
         endGame();
       }
-  
     }, 1000);
 }
 
 function sendMessage() {
- timer.textContent = "Time if up!"
+ timer.textContent = "Time is up!"
 }
-
 
 // when timer runs out
 // when last question is answered
 function endGame() {
     sendMessage();
     questionSection.classList.add('hide');
-    initialSection.classList.remove('hide');
+    initialsSection.classList.remove('hide');
     score = time ;
     console.log(score);
     clearInterval(timerInterval);
-
 }
 
 var userInput = document.getElementById("input");
 var score = 0
 submit.addEventListener("click", function () {
+    // initialSection.classList.add('hide');
+    // highScores.classList.remove('hide');
     var initials = userInput.value;
+    
     console.log(initials);
-    score = secondsLeft;
+    score = time;
+
     localStorage.setItem(initials, score);
-    // pobably will be in a for loop
+    // probably will be in a for loop
+    showHighScores();
 })
 
-function getHighScores() {
-    var highScores = localStorage.getItem("jr");
+// Display HighScores
+function showHighScores() {
+    
+    var highScores = localStorage.getItem("","");
     var finalScore = document.getElementById("finalscore");
     var listEl = document.createElement("li");
+    resultSection.classList.remove('hide');
+    initialsSection.classList.add('hide');
     listEl.textContent = highScores;
     finalScore.append(listEl);
-
+    console.log(highScores);
 }
+
+
+
+
+// Add event listener - Go back will go to first page
+goBack.addEventListener("click", function () {
+    introSection.classList.remove('hide');
+    resultSection.classList.add('hide');
+})
+
+// Add event listener - Clear highscores will clear local storage
+clearHighscores.addEventListener("click", function() {
+    var clearHighscores = localStorage.clear();
+    clearHighscores.textContent('');
+})    
 
 
 // When click on an option, next question is loaded and either wrong or correct appears on bottom and if incorrect, time is deducted from timer 
@@ -147,12 +168,7 @@ function getHighScores() {
 
 // After end of questions, All done, your final is ...
     // textbox to enter initials
-
-// display Highscores
-// buttons - option - go back / clear scores
-    // evenlisteners
-        // go back will go to start
-        // clear highscores will clear local storage
+    
 
 
 

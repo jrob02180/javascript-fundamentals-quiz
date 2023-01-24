@@ -10,19 +10,17 @@
 <body>
     <header id="header">
         <div>
-        <a class="highscore-link" href="#">View Highscores</a>
-        <h3 id="timer">Time: </h3>
-        </div>
+        <a class="highscore-link" href="#">View Highscores</a></div>
+        <div id="timer">Time: </div>
     </header>
-    <main>
-        <div class="container"></div>
-            <div class="intro-section">
-                <h3>Coding Quiz Challenge</h3>
-                <p>Try to answer the following code-related questions within the time. Keep in mind time will be deducted for incorrect answers.</p>
+    <main class="container">
+         <div class="intro-section">
+                <h2>Coding Quiz Challenge</h2>
+                <p>Try to answer the following code-related questions within the time displayed. Keep in mind time will be deducted for incorrect answers.</p>
                 <button id="start">Start</button>
             </div>  
-        <div class="question-section hide">
-                <h3 id="question-title">Question</h3>
+            <div class="question-section hide">
+                <h2 id="question-title">Question</h2>
                 <div class="options">
                     <button id="opt1">1st Choice</button>
                     <button id="opt2">2nd Choice</button>
@@ -30,20 +28,20 @@
                     <button id="opt4">4th Choice</button>
                 </div>
             </div>
-        <div class="divider"></div>
-        <div class="initial-section hide">
-            <p>Your Final Score is </p>
-            <p>Enter initials 
-                <input id="input" type="text">
-                <button id="submit" >Submit</button>
-            </p>
-        </div>
-        <div class="result-section hide">
-            <h3>Highscores</h3>
-            <ul id="finalscore"></ul>
-            <button id="go-back">Go Back</button>
-            <button id="clear-highscores">Clear Highscores</button>
-        </div>
+            <div class="divider"></div>
+            <div class="initials-section hide">
+                <h2>Your Final Score is </h2>
+                <p>Enter initials 
+                    <input id="input" type="text">
+                    <button id="submit" >Submit</button>
+                </p>
+            </div>
+            <div class="result-section hide">
+                <h2>Highscores</h2>
+                <p id="finalscore"></p>
+                <button id="go-back">Go Back</button>
+                <button id="clear-highscores">Clear Highscores</button>
+            </div>
     </main>
 
     <script src="./assets/js/script.js"></script>
