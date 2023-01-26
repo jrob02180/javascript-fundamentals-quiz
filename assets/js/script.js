@@ -148,7 +148,8 @@ submit.addEventListener("click", function () {
 // Display HighScores
 function showHighScores() {
   var allHighscores = document.getElementById("all-scores");
-  var storedInitials = JSON.parse(localStorage.getItem("highScores"));
+  allHighscores.innerHTML = "";
+  var storedInitials = JSON.parse(localStorage.getItem("highScores")) || [];
   for (let index = 0; index < storedInitials.length; index++) {
     var element = storedInitials[index];
     var li = document.createElement("li");
@@ -170,11 +171,15 @@ clearHighscores.addEventListener("click", function () {
   localStorage.clear();
   allHighscores.remove();
   finalScore.remove();
+  window.location.reload();
 });
 
 // Highscores Link will will go back to the show highscores page
 highScoreLink.addEventListener("click", function () {
-  resultSection.classList.remove("hide");
+  introSection.classList.add("hide");
   questionSection.classList.add("hide");
+  initialsSection.classList.add("hide");
+  resultSection.classList.remove("hide");
+  finalScore.remove();
   showHighScores();
 });
